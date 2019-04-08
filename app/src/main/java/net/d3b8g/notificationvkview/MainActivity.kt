@@ -1,15 +1,19 @@
 package net.d3b8g.notificationvkview
 
+import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.FrameLayout
 import com.vk.api.sdk.VK
+import kotlinx.android.synthetic.main.activity_main.*
 import net.d3b8g.notificationvkview.FramePosition.Content
 import net.d3b8g.notificationvkview.FramePosition.NullAccount
 import net.d3b8g.notificationvkview.Helpers.replaceFragment
 import net.d3b8g.notificationvkview.Intefaces.LoginWell
 
 class MainActivity : AppCompatActivity(),LoginWell {
+
+    private val GLOBAL_TAG_CONTENT = "content_tag_activity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,7 +22,17 @@ class MainActivity : AppCompatActivity(),LoginWell {
         val user = findViewById<FrameLayout>(R.id.user_indent)
         val content = findViewById<FrameLayout>(R.id.content_frame)
 
-        if(VK.isLoggedIn())replaceFragment(NullAccount(),content.id)
-        else replaceFragment(Content(),content.id)
+        if(VK.isLoggedIn())replaceFragment(Content(),content.id,GLOBAL_TAG_CONTENT)
+        else replaceFragment(NullAccount(),content.id,GLOBAL_TAG_CONTENT)
+    }
+
+    fun LoggedAccess(){
+        replaceFragment(Content(),content_frame.id,GLOBAL_TAG_CONTENT)
+    }
+
+    companion object {
+        fun LoggedAccess(context: Context){
+            (context as MainActivity).LoggedAccess()
+        }
     }
 }
