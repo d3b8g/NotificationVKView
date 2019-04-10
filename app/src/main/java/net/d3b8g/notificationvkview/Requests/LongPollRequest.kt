@@ -21,7 +21,7 @@ class LongPollRequest(val xxx: String = "") : ApiCommand<LPModels>(){
         return manager.execute(call,parseResponse())
     }
 
-    class parseResponse():VKApiResponseParser<LPModels>{
+    class parseResponse:VKApiResponseParser<LPModels>{
         override fun parse(response: String?): LPModels {
             try {
                 Log.e("RRR","$response")
