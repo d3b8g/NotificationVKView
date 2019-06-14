@@ -22,10 +22,10 @@ class LongPollRequest(val xxx: String = "") : ApiCommand<LPModels>(){
     }
 
     class parseResponse:VKApiResponseParser<LPModels>{
-        override fun parse(response: String?): LPModels {
+        override fun parse(response: String): LPModels {
             try {
                 Log.e("RRR","$response")
-                val data = JsonParser().parse(response!!).asJsonObject.get("response")
+                val data = JsonParser().parse(response).asJsonObject.get("response")
                 return LPModels(key = data.asJsonObject.get("key").asString,
                 server =  data.asJsonObject.get("server").asString,
                 ts = data.asJsonObject.get("ts").asLong)

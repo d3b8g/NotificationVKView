@@ -15,6 +15,7 @@ import net.d3b8g.notificationvkview.FramePosition.Content
 import net.d3b8g.notificationvkview.FramePosition.NullAccount
 import net.d3b8g.notificationvkview.Helpers.replaceFragment
 import net.d3b8g.notificationvkview.Intefaces.LoginWell
+import net.d3b8g.notificationvkview.NotificationPackage.NotificationHeader
 
 class MainActivity : AppCompatActivity(),LoginWell {
 
@@ -29,6 +30,8 @@ class MainActivity : AppCompatActivity(),LoginWell {
 
         if(VK.isLoggedIn())replaceFragment(Content(),content.id,GLOBAL_TAG_CONTENT)
         else replaceFragment(NullAccount(),content.id,GLOBAL_TAG_CONTENT)
+
+        NotificationHeader(this).startNotify("аудиосообщение","https://pp.userapi.com/c848416/v848416539/14b3f/zoiCcgQNuMA.jpg")
     }
 
     fun LoggedAccess(){
@@ -42,14 +45,14 @@ class MainActivity : AppCompatActivity(),LoginWell {
             }
 
             override fun onLoginFailed(errorCode: Int) {
-                Log.e("RRR","$errorCode")
+                Log.e("RRR", "$errorCode")
             }
         }
-        if(data==null||!VK.onActivityResult(requestCode, resultCode, data,callback)){
-            Log.e("RRR","smth wrong")
+        if (data == null || !VK.onActivityResult(requestCode, resultCode, data, callback)) {
             super.onActivityResult(requestCode, resultCode, data)
         }
     }
+
     companion object {
         fun btn_login(context: Context){
             VK.login(context as MainActivity, arrayListOf(VKScope.MESSAGES, VKScope.GROUPS))
