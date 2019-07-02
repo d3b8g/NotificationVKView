@@ -1,6 +1,0 @@
-<resources>
-    <string name="app_name">NotificationVKView</string>
-    <string name="null_account">Не авторизованны</string>
-    <string name="b_auth">Войти</string>
-    <integer name="com_vk_sdk_AppId">6737144</integer>
-</resources>
