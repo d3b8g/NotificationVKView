@@ -45,7 +45,7 @@ class Content:Fragment(){
 
         VK.execute(LongPollRequest(),object: VKApiCallback<LPModels>{
             override fun fail(error: VKApiExecutionException) {
-                Log.d("RRR","smth wrong $error)")
+                Log.e("RRR","smth wrong $error)")
             }
 
             override fun success(result: LPModels) {

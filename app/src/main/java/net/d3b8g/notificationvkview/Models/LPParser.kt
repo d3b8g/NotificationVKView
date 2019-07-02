@@ -3,7 +3,6 @@ package net.d3b8g.notificationvkview.Models
 import android.os.Parcel
 import android.os.Parcelable
 import android.util.ArrayMap
-import android.util.Log
 import com.google.gson.JsonArray
 import net.d3b8g.notificationvkview.FramePosition.Content
 
@@ -51,9 +50,10 @@ class LPParser (
             val msg_list:Int = json.size()
             var arrayMap: ArrayMap<String, String> = ArrayMap()
             Content().requestLP()
-            if (response_code_lp == 4) {
-                if(json.get(0).asJsonArray.get(7).toString().contains("attach1_type"))
-                    Log.d("RRR,"," а йа")
+            for(i in 0..json.size()){
+                if (response_code_lp == 4 && json.get(i).asJsonArray.get(7).toString().contains("attach1_type")) {
+
+                }
             }
             return LPParser(0,0, 0, 0, arrayMap, 0)
         }

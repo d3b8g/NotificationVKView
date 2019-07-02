@@ -1,6 +1,5 @@
 package net.d3b8g.notificationvkview.Requests
 
-import android.util.Log
 import com.google.gson.JsonParser
 import com.vk.api.sdk.VKApiManager
 import com.vk.api.sdk.VKApiResponseParser
@@ -24,7 +23,6 @@ class UserSimpleRequest : ApiCommand<UserSimpleModels>() {
         override fun parse(response: String): UserSimpleModels {
             try{
                 val data = JsonParser().parse(response).asJsonObject.get("response").asJsonArray.get(0)
-                Log.e("RRR","$data")
                 return UserSimpleModels(
                     id = data.asJsonObject.get("id").asInt,
                     username = "${data.asJsonObject.get("first_name").asString} ${data.asJsonObject.get("last_name").asString}",

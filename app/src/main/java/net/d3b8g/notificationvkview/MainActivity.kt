@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity(),LoginWell {
 
     companion object {
         fun btn_login(context: Context){
-            VK.login(context as MainActivity, arrayListOf(VKScope.MESSAGES, VKScope.GROUPS))
+            VK.login(context as MainActivity, arrayListOf(VKScope.NOTIFY,VKScope.MESSAGES))
         }
     }
 
